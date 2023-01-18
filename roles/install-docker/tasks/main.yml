@@ -1,11 +1,9 @@
 - name: update and upgrade apt packages
-  become: yes
   apt:
     upgrade: yes
     update_cache: yes
   
-- name: Install nessesary packages
-  become: yes
+- name: Install supported packages
   apt:
     name: "{{ support_packages }}"
 
@@ -20,7 +18,8 @@
       apt_repository:
         repo: "deb [arch={{ ansible_architecture }} signed-by={{ keyring }}] {{ base_url }} {{ ansible_distribution_release }} stable"
         state: present
-
+  when: ansible_os_family == "Debian"
+  
 - name: update and upgrade apt packages
   become: yes
   apt:

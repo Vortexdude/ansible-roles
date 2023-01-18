@@ -7,23 +7,18 @@
 - name: Install nessesary packages
   become: yes
   apt:
-    name: "{{ packages }}"
-    name: ca-certificates
-    name: curl    
-    name: gnupg
-    name: lsb-release
-
+    name: "{{ support_packages }}"
 
 - name: One way to avoid apt_key once it is removed from your distro
   block:
     - name: somerepo |no apt key
       get_url:
-        url:  https://download.docker.com/linux/ubuntu/gpg
-        dest: /etc/apt/keyrings/docker.gpg
+        url:  "{{ gpg_key_url }}"
+        dest: "{{ keyring }}"
 
     - name: somerepo | apt source
       apt_repository:
-        repo: "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        repo: "deb [arch={{ ansible_architecture }} signed-by={{ keyring }}] {{ base_url }} {{ ansible_distribution_release }} stable"
         state: present
 
 - name: update and upgrade apt packages
@@ -34,6 +29,6 @@
 
 - name: install docker package
   apt:
-    name: docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    name: "{{ docker_package }}"
     state: present
 

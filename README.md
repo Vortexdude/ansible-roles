@@ -1,6 +1,13 @@
 ### Ansible Roles
 ##### Here you can find most of the ansible role
 
+## Installing docker via the script
+
+``` bash
+wget https://get.docker.com/ -o get-docker.sh 
+
+```
+
 ``` bash
 wget https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.6.9-1_amd64.deb
 

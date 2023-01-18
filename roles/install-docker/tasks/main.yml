@@ -13,7 +13,7 @@
   block:
     - name: somerepo |no apt key
       get_url:
-        url:  "{{ gpg_key_url }}"
+        url:  "{{ base_url }}gpg"
         dest: "{{ keyring }}"
 
     - name: somerepo | apt source

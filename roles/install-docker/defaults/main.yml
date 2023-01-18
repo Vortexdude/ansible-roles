@@ -3,3 +3,18 @@ packages_url:
   - https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.9~3-0~ubuntu-focal_amd64.deb
   - https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-rootless-extras_20.10.9~3-0~ubuntu-focal_amd64.deb
   - https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-scan-plugin_0.9.0~ubuntu-focal_amd64.deb
+
+base_url: https://download.docker.com/linux/ubuntu/
+
+keyring: /etc/apt/keyrings/docker.gpg
+support_packages:
+  - ca-certificates
+  - curl    
+  - gnupg
+  - lsb-release
+  
+docker_package:
+  - docker-ce 
+  - docker-ce-cli 
+  - containerd.io 
+  - docker-compose-plugin

@@ -1,0 +1,5 @@
+- name: installing the docker packages
+  apt:
+    deb: "{{ item }}"
+  with_items: "{{ packages_url }}"
+  

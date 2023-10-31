@@ -1,4 +1,8 @@
 ### Ansible Roles
+
+1. Install docker
+2. Setup the nginx for live streaming server
+
 ##### Here you can find most of the ansible role
 
 ## Installing docker via the script

@@ -1,0 +1,34 @@
+- name: Ensure nginx is installed
+  stat:
+    path: /usr/sbin/nginx
+  register: nginx_bin_status
+
+- name: Installing nginx
+  include_tasks: install-nginx.yml
+  when: not nginx_bin_status.stat.exists
+
+- name: check the module already installed or not
+  stat: 
+    path: /usr/lib/nginx/modules/ngx_rtmp_module.so
+  register: module_stat
+
+- name: install the module
+  apt:
+    name: "{{ module_name }}"
+    state: present
+  when: not module_stat.stat.exists
+
+- name: configure nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  register: nginx_conf
+
+- name: restart nginx-service
+  service:
+    name: nginx
+    state: reloaded
+  when: nginx_conf.changed
+
+- debug:
+    msg: "Your Live server UP and runnig..."

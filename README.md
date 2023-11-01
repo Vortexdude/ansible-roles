@@ -2,10 +2,16 @@
 
 1. Install docker
 2. Setup the nginx for live streaming server
+3. Unknown
 
-##### Here you can find most of the ansible role
+##### Run the ansible role in local
 
-## Installing docker via the script
+``` bash
+sudo ansible-playbook configure_nginx.yml -i inventory.yml -c local
+
+```
+
+1. Installing docker via the script
 
 ``` bash
 wget https://get.docker.com/ -o get-docker.sh 

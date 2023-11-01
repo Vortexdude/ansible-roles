@@ -1,0 +1,14 @@
+all:
+  children:
+    app:
+      hosts:
+        127.0.0.1
+      vars:
+        ansible_user: app_user
+        ansible_python_interpreter: /usr/bin/python3
+    nginx:
+      hosts:
+        127.0.0.1
+      vars:
+        ansible_user: root
+        ansible_python_interpreter: /usr/bin/python3

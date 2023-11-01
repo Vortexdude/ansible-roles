@@ -1,0 +1,11 @@
+- name: Install nginx
+  apt:
+    name: "{{ package_name }}"
+    state: present
+  register: package_stat
+
+- name: Ensuring the service is up and runnig
+  service:
+    name: "{{ package_name }}"
+      state: started
+  when: package_stat.changed

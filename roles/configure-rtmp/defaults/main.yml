@@ -1,0 +1,3 @@
+package_name: nginx
+module_name: libnginx-mod-rtmp
+rtmp_default_port: 1935
